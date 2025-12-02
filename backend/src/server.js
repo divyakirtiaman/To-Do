@@ -30,7 +30,7 @@ const PORT=process.env.PORT || 5001;
 
 
 app.use("/api/notes", notesRoutes);
-if(ENV.NODE_ENV==="production"){
+if(NODE_ENV==="production"){
   app.use(express.static(path.join(__dirname,"../frontend/dist")));
   app.use((req,res)=>{
     res.sendDate(path.join(__dirname,"../frontend","dist","index.html"));
