@@ -11,7 +11,7 @@ const __dirname=path.resolve();
 dotenv.config();
 
 
-
+const NODE_ENV = process.env.NODE_ENV || 'development';
 const app = express();
 app.use(express.json()); 
 app.use(rateLimiter);
@@ -30,7 +30,7 @@ const PORT=process.env.PORT || 5001;
 
 
 app.use("/api/notes", notesRoutes);
-if(process.env.NODE_ENV==="production"){
+if(NODE_ENV==="production"){
   app.use(express.static(path.join(__dirname,"../frontend/dist")));
   app.use((req,res)=>{
     res.sendFile(path.join(__dirname,"../frontend","dist","index.html"));
