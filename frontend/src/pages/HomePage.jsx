@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../lib/axios";
 import RateLimitedUI from "../components/RateLimitedUI";
 import NoteCard from "../components/NoteCard";
 import NotesNotFound from "../components/NotesNotFound";
@@ -15,7 +15,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const response = await axios.get("http://localhost:5001/api/notes");
+        const response = await api.get("/notes");
 
         console.log("API RESPONSE:", response.data);
 
